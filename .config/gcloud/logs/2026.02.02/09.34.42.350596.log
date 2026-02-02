@@ -1,0 +1,36 @@
+2026-02-02 09:34:42,967 DEBUG    root            Loaded Command Group: ['gcloud', 'compute']
+2026-02-02 09:34:43,350 DEBUG    root            Loaded Command Group: ['gcloud', 'compute', 'scp']
+2026-02-02 09:34:43,355 DEBUG    root            Failed to read GCE cache file: [Errno 2] No such file or directory: '/home/sai_masetti_42gears_com/.config/gcloud/gce'
+2026-02-02 09:34:43,360 DEBUG    root            On GCE from server: True
+2026-02-02 09:34:43,363 DEBUG    root            Running [gcloud.compute.scp] with arguments: [[[USER@]INSTANCE:]DEST: "docker-vm-app:/home/sai_masetti_42gears_com/", [[USER@]INSTANCE:]SRC:3: "['D:Flask-gke-appapp.py', 'D:Flask-gke-apprequirements.txt', 'D:Flask-gke-appDockerfile']"]
+2026-02-02 09:34:43,364 WARNING  root            The private SSH key file for gcloud does not exist.
+2026-02-02 09:34:43,364 WARNING  root            The public SSH key file for gcloud does not exist.
+2026-02-02 09:34:43,364 WARNING  root            You do not have an SSH key for gcloud.
+2026-02-02 09:34:43,364 WARNING  root            SSH keygen will be executed to generate a key.
+2026-02-02 09:34:47,262 DEBUG    root            Running command [/usr/bin/ssh-keygen -t rsa -f /home/sai_masetti_42gears_com/.ssh/google_compute_engine].
+2026-02-02 09:34:47,263 DEBUG    root            Executing command: ['/usr/bin/ssh-keygen', '-t', 'rsa', '-f', '/home/sai_masetti_42gears_com/.ssh/google_compute_engine']
+2026-02-02 09:35:16,258 DEBUG    root            (gcloud.compute.scp) All sources must be local files when destination is remote.  Got sources: [D:Flask-gke-appapp.py, D:Flask-gke-apprequirements.txt, D:Flask-gke-appDockerfile], destination: docker-vm-app:/home/sai_masetti_42gears_com/
+Traceback (most recent call last):
+  File "/usr/bin/../lib/google-cloud-sdk/lib/googlecloudsdk/calliope/cli.py", line 944, in Execute
+    resources = calliope_command.Run(cli=self, args=args)
+  File "/usr/bin/../lib/google-cloud-sdk/lib/googlecloudsdk/calliope/backend.py", line 967, in Run
+    resources = command_instance.Run(args)
+  File "/usr/bin/../lib/google-cloud-sdk/lib/surface/compute/scp.py", line 188, in Run
+    return scp_helper.RunScp(
+           ~~~~~~~~~~~~~~~~~^
+        holder,
+        ^^^^^^^
+    ...<6 lines>...
+        release_track=self.ReleaseTrack(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        ip_type=ip_type)
+        ^^^^^^^^^^^^^^^^
+  File "/usr/bin/../lib/google-cloud-sdk/lib/googlecloudsdk/command_lib/compute/scp_utils.py", line 108, in RunScp
+    ssh.SCPCommand.Verify(srcs, dst, single_remote=True)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/bin/../lib/google-cloud-sdk/lib/googlecloudsdk/command_lib/util/ssh/ssh.py", line 2204, in Verify
+    raise InvalidConfigurationError(
+    ...<3 lines>...
+    )
+googlecloudsdk.command_lib.util.ssh.ssh.InvalidConfigurationError: All sources must be local files when destination is remote.  Got sources: [D:Flask-gke-appapp.py, D:Flask-gke-apprequirements.txt, D:Flask-gke-appDockerfile], destination: docker-vm-app:/home/sai_masetti_42gears_com/
+2026-02-02 09:35:16,271 ERROR    root            (gcloud.compute.scp) All sources must be local files when destination is remote.  Got sources: [D:Flask-gke-appapp.py, D:Flask-gke-apprequirements.txt, D:Flask-gke-appDockerfile], destination: docker-vm-app:/home/sai_masetti_42gears_com/
