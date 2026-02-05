@@ -3,7 +3,7 @@ from google.cloud import storage
 import os
 
 app = Flask(__name__)
-BUCKET = os.environ["BUCKET_NAME"]
+BUCKET = os.environ["sai-vinay-flask"]
 
 client = storage.Client()
 bucket = client.bucket(BUCKET)
@@ -31,3 +31,4 @@ def download(name):
     return send_file(name)
 
 app.run(host="0.0.0.0", port=80)
+
