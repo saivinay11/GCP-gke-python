@@ -2,7 +2,7 @@ from flask import Flask, request, send_file
 from google.cloud import storage
 import os
 app = Flask(__name__)
-BUCKET = os.environ["BUCKET_NAME"]
+BUCKET = os.environ["BUCKET"]
 client = storage.Client()
 bucket = client.bucket(BUCKET)
 @app.route("/", methods=["GET", "POST"])
@@ -25,3 +25,4 @@ blob = bucket.blob(name)
 blob.download_to_filename(name)
 return send_file(name)
 app.run(host="0.0.0.0", port=80)
+
